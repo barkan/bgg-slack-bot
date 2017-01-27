@@ -1,0 +1,5 @@
+name: BGGbot
+description: Search boardgamegeek.com for a game and return information about the best match
+
+# avatar: .beepboop/avatar.png
+# To learn everything supported in the bot.yml file, visit https://beepboophq.com/docs/article/bot-yml
