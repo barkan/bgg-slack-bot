@@ -28,7 +28,7 @@ app.post('/slack/command', function (req, res) {
 
               var linkResponse = {
                  "response_type": "in_channel",
-                 "text": gameLink
+                 "text": "*" + gameName +":* " + gameLink
               }
 
               res.send(linkResponse);
