@@ -1,10 +1,8 @@
-'use strict'
-
 // Running through first time with no comments. forgive me.
 
-const express = require('express')
-const got = require("got")
-const parseString = require('xml2js').parseString
+var express = require('express')
+var got = require("got")
+var parseString = require('xml2js').parseString
 
 var searchURL = "https://boardgamegeek.com/xmlapi/search?exact=1&search=";
 var app = express()
@@ -18,10 +16,17 @@ app.get('/search', function (req, res) {
           var xml = response.body
           parseString(xml, function (err, json) {
               var gameID = Number(json.boardgames.boardgame[0].$.objectid);
+              var gameName = json.boardgames.boardgame[0].name[0]._ ;
               var gameLink = "https://boardgamegeek.com/game/"+gameID
-              console.log(gameLink);
 
-              res.send("<a href='${gameLink}'>${thisSearch}</a>")
+              html = "<!DOCTYPE html>" +
+                        "<head><title>That thing I sent you</title></head>" +
+                        "<body>"+
+                        "<a href='" + gameLink +"' target='_blank'>" + gameName +"</a>" +
+                        "</body>" +
+                      "</html>";
+
+              res.send(html);
           })
       })
       .catch(error => {
