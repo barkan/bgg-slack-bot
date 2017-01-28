@@ -18,8 +18,9 @@
   "homepage": "https://github.com/barkan/bgg-bot#readme",
   "dependencies": {
     "express": "*",
-    "firebase": "^3.6.7",
+    "firebase": "*",
     "https": "*",
-    "xml2js": "*"
+    "xml2js": "*",
+    "got": "*"
   }
 }
