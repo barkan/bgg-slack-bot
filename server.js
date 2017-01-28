@@ -8,8 +8,15 @@ var searchURL = "https://boardgamegeek.com/xmlapi/search?exact=1&search=";
 var app = express()
 var port = process.env.PORT || 3000
 
-app.get('/search', function (req, res) {
-  var thisSearch = searchURL + req.query.search
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, command, text");
+  next();
+});
+
+app.post('/slack/command', function (req, res) {
+
+ var thisSearch = searchURL + "taluva";
 
   got(thisSearch)
       .then(response => {
@@ -30,7 +37,7 @@ app.get('/search', function (req, res) {
           })
       })
       .catch(error => {
-          console.log(error.response.body);
+          console.log(error);
       });            
 })
 

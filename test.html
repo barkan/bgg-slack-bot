@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trying it out</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+<button>Please work</button>
+	<script>
+		$('button').on('click', function() {
+			console.log("YAY!")
+			$.ajax({
+				url: "http://localhost:3000/slack/command",
+				method: "POST",
+				headers: {
+					command: "/bgg",
+					text: "Tannhauser"
+				}
+			})
+			.done(function(response){
+				console.log("RESPONSE",response);
+			})
+			console.log("whut")
+		})
+	</script>
+</body>
+</html>
