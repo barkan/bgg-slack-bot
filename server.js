@@ -15,7 +15,10 @@ app.use(function(req, res, next) {
 });
 
 app.post('/slack/command', function (req, res) {
-
+  console.log(JSON.stringify(req.headers));
+  console.log(JSON.stringify(req.query));
+  return;
+  
  var thisSearch = searchURL + req.headers["text"];
 
   got(thisSearch)
