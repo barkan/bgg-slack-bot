@@ -16,7 +16,7 @@ app.use(function(req, res, next) {
 
 app.post('/slack/command', function (req, res) {
 
- var thisSearch = searchURL + "taluva";
+ var thisSearch = searchURL + req.headers.text;
 
   got(thisSearch)
       .then(response => {
