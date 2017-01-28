@@ -5,7 +5,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
-<button>Please work</button>
+<form onsubmit="return false;">
+	<input type="text" value="tannhauser" id="text" />
+	<button>Please work</button>
+</form>
 	<script>
 		$('button').on('click', function() {
 			console.log("YAY!")
@@ -14,7 +17,7 @@
 				method: "POST",
 				headers: {
 					command: "/bgg",
-					text: "Tannhauser"
+					text: $("#text").val()
 				}
 			})
 			.done(function(response){
