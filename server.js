@@ -26,14 +26,12 @@ app.post('/slack/command', function (req, res) {
               var gameName = json.boardgames.boardgame[0].name[0]._ ;
               var gameLink = "https://boardgamegeek.com/game/"+gameID
 
-              html = "<!DOCTYPE html>" +
-                        "<head><title>That thing I sent you</title></head>" +
-                        "<body>"+
-                        "<a href='" + gameLink +"' target='_blank'>" + gameName +"</a>" +
-                        "</body>" +
-                      "</html>";
+              var linkResponse = {
+                 "response_type": "in_channel",
+                 "text": gameLink
+              }
 
-              res.send(html);
+              res.send(linkResponse);
           })
       })
       .catch(error => {
