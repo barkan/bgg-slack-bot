@@ -18,7 +18,7 @@ app.post('/slack/command', function (req, res) {
   console.log(req.body);
   return;
 
- var thisSearch = searchURL + req.headers["text"];
+ var thisSearch = searchURL + req.body.match(/text=(.+)/)[1];
 
   got(thisSearch)
       .then(response => {
